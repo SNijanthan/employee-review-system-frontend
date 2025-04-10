@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { BASE_URL } from "../utils/constants";
 import { Link, useNavigate } from "react-router-dom";
 import { removeUser } from "../utils/userSlice";
+import { removeEmployees } from "../utils/employeeSlice";
 
 const Navbar = () => {
   const user = useSelector((store) => store.user);
@@ -14,6 +15,7 @@ const Navbar = () => {
   const handleLogout = async () => {
     await axios.post(BASE_URL + "/logout", {}, { withCredentials: true });
     dispatch(removeUser());
+    dispatch(removeEmployees());
     navigate("/login");
   };
 
@@ -27,8 +29,22 @@ const Navbar = () => {
           Employee Review System
         </Link>
         <div className="flex items-center mr-20 font-mono">
-          {user?.name && <p className="mr-20">Welcome {user.name} 😊</p>}
-          {user?.role && <p className="mr-20">Role: {user.role}</p>}
+          {user?.name && <p className="mx-2">Welcome {user.name} 😊</p>}
+          {user?.role && <p className="mx-5">Role: {user.role}</p>}
+          {user && user.role === "admin" && (
+            <Link to="/add-employee">
+              <button className="btn btn-warning text-gray-800 mx-5">
+                Add Employee
+              </button>
+            </Link>
+          )}
+          {user && user.role === "admin" && (
+            <Link to="/assign-review">
+              <button className="btn btn-accent text-gray-800 mx-5">
+                Assign Review
+              </button>
+            </Link>
+          )}
           {user && (
             <button className="btn" onClick={handleLogout}>
               Logout

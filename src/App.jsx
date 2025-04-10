@@ -6,6 +6,8 @@ import Signup from "./components/Signup";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
 import Main from "./components/Main";
+import AddEmployee from "./components/AddEmployee";
+import AssignReview from "./components/AssignReview";
 
 const App = () => {
   return (
@@ -15,6 +17,8 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Body />}>
               <Route path="/" element={<Main />} />
+              <Route path="/add-employee" element={<AddEmployee />} />
+              <Route path="/assign-review" element={<AssignReview />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
             </Route>

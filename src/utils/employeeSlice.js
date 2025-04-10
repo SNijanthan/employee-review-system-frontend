@@ -7,7 +7,7 @@ const employeesSlice = createSlice({
     addEmployees: (state, action) => {
       return action.payload;
     },
-    removeEmployees: () => null,
+    removeEmployees: () => [],
   },
 });
 

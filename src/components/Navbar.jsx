@@ -28,7 +28,7 @@ const Navbar = () => {
         >
           Employee Review System
         </Link>
-        <div className="flex items-center mr-20 font-mono">
+        <div className="flex items-center mr-5 font-mono">
           {user?.name && <p className="mx-2">Welcome {user.name} 😊</p>}
           {user?.role && <p className="mx-5">Role: {user.role}</p>}
           {user && user.role === "admin" && (
@@ -40,7 +40,7 @@ const Navbar = () => {
           )}
           {user && user.role === "admin" && (
             <Link to="/assign-review">
-              <button className="btn btn-accent text-gray-800 mx-5">
+              <button className="btn btn-accent text-gray-800 mr-5">
                 Assign Review
               </button>
             </Link>

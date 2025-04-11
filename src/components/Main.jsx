@@ -31,8 +31,6 @@ const Main = () => {
     }
   }, [user]);
 
-  if (!user) return <div>Loading...</div>;
-
   return <>{user.role === "admin" ? <Admin /> : <Employees />}</>;
 };
 

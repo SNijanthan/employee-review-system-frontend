@@ -9,6 +9,10 @@ const Admin = () => {
 
   const [toast, setToast] = useState(false);
 
+  const [deleteUser, setDeleteUser] = useState(false);
+
+  const [success, setSuccess] = useState(false);
+
   const employeesDetails = useSelector((store) => store.employees) || [];
 
   const fetchUsersDetails = async () => {
@@ -31,9 +35,28 @@ const Admin = () => {
       );
       if (res.status === 200) {
         setToast(true);
+        setSuccess(res.data.message);
         setTimeout(() => {
           setToast(false);
           dispatch(addEmployees(res.data.data));
+        }, 3000);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleDeleteUser = async (_id) => {
+    try {
+      const res = await axios.delete(BASE_URL + "/users/" + _id, {
+        withCredentials: true,
+      });
+      if (res.status === 200) {
+        setDeleteUser(true);
+        setSuccess(res.data.message);
+        fetchUsersDetails();
+        setTimeout(() => {
+          setDeleteUser(false);
         }, 3000);
       }
     } catch (error) {
@@ -64,10 +87,19 @@ const Admin = () => {
         {toast && (
           <div className="toast toast-top toast-end z-50 transition-all duration-300 ease-in-out">
             <div className="alert alert-success shadow-lg">
-              <span>Promoted as admin successfully</span>
+              <span>{success}</span>
             </div>
           </div>
         )}
+
+        {deleteUser && (
+          <div className="toast toast-top toast-end mt-32 transition-all duration-300 ease-in-out">
+            <div className="alert alert-error shadow-lg">
+              <span>{success}</span>
+            </div>
+          </div>
+        )}
+
         {nonAdminEmployees.map((employee) => (
           <div
             key={employee._id}
@@ -77,17 +109,25 @@ const Admin = () => {
               <p className="mb-2">{employee.name.toUpperCase()}</p>
               <p className="mb-2">{employee.email}</p>
               <p className="mb-2">{employee.role.toUpperCase()}</p>
-              <div className="card-actions justify-end">
+              <div className="card-actions items-center justify-between px-8">
                 <button
                   onClick={() => {
                     handlePromoteToAdmin(employee._id);
                   }}
-                  className="mt-5 px-3 py-2 bg-[#4169e1] border-none rounded-lg cursor-pointer"
+                  className="mt-5 px-3 py-2 bg-[#4169e1] border-none rounded-lg cursor-pointer font-light"
                   disabled={employee.role === "admin"}
                 >
                   {employee.role === "admin"
                     ? "Already Admin"
                     : "Promote to Admin"}
+                </button>
+                <button
+                  className="btn btn-error border-none rounded-lg cursor-pointer mt-5 px-3 py-2 text-white font-light"
+                  onClick={() => {
+                    handleDeleteUser(employee._id);
+                  }}
+                >
+                  Delete User
                 </button>
               </div>
             </div>

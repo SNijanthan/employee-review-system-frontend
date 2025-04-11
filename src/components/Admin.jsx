@@ -74,9 +74,9 @@ const Admin = () => {
             className="card card-border my-3 bg-black w-96 text-center hover:scale-105"
           >
             <div className="card-body">
-              <p className="mb-2">{employee.name}</p>
+              <p className="mb-2">{employee.name.toUpperCase()}</p>
               <p className="mb-2">{employee.email}</p>
-              <p className="mb-2">{employee.role}</p>
+              <p className="mb-2">{employee.role.toUpperCase()}</p>
               <div className="card-actions justify-end">
                 <button
                   onClick={() => {

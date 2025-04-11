@@ -43,9 +43,10 @@ export default Main;
  * ! 1. Login API
  * ! 2. Signup API
  * ! 3. Authorize users
- * ! 4. Redux store cannot be empty even after refresh
- * ! 5. View employees API.
- * ! 6. Promote employee to "Admin"
+ * ! 4. Dashboard based on user role
+ * ! 5. Redux store cannot be empty even after refresh
+ * ! 6. View employees API.
+ * ! 7. Promote employee to "Admin"
  *
  * * Todos
  * * 1. Assign reviews to employees

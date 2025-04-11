@@ -5,6 +5,7 @@ import { BASE_URL } from "../utils/constants";
 import { Link, useNavigate } from "react-router-dom";
 import { removeUser } from "../utils/userSlice";
 import { removeEmployees } from "../utils/employeeSlice";
+import { removeAssignedReviews } from "../utils/assignedReview";
 
 const Navbar = () => {
   const user = useSelector((store) => store.user);
@@ -16,6 +17,7 @@ const Navbar = () => {
     await axios.post(BASE_URL + "/logout", {}, { withCredentials: true });
     dispatch(removeUser());
     dispatch(removeEmployees());
+    dispatch(removeAssignedReviews());
     navigate("/login");
   };
 

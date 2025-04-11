@@ -41,7 +41,7 @@ const Employees = () => {
   }, [assignedReviews]);
 
   return (
-    <div className="w-4/6 m-auto flex items-center justify-between">
+    <div className="w-4/6 m-auto flex items-center justify-between mt-10">
       <ReceivedFeedbacks />
       <AssignedReviews />
     </div>

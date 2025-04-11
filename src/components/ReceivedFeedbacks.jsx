@@ -1,22 +1,24 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 const ReceivedFeedbacks = () => {
+  const reviews = useSelector((store) => store.reviews);
   return (
     <>
-      <div>
-        <h1 className="my-10">ReceivedFeedbacks</h1>
-        <div className="card card-dash bg-base-100 w-96">
-          <div className="card-body">
-            <h2 className="card-title">Card Title</h2>
-            <p>
-              A card component has a figure, a body part, and inside body there
-              are title and actions parts
-            </p>
-            <div className="card-actions justify-end">
-              <button className="btn btn-primary">Buy Now</button>
+      <div className="w-full text-center flex flex-col items-center">
+        <h1 className="my-5 text-6xl font-light tracking-wider">
+          ReceivedFeedbacks
+        </h1>
+        {reviews.map((review) => (
+          <div className="card bg-base-300 w-96">
+            <div className="card-body text-center ">
+              <p className="text-2xl font-light mb-2">
+                {review.reviewerId.name.toUpperCase()}
+              </p>
+              <p className="tracking-wide">{review.comments}</p>
             </div>
           </div>
-        </div>
+        ))}
       </div>
     </>
   );

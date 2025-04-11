@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { removeUser } from "../utils/userSlice";
 import { removeEmployees } from "../utils/employeeSlice";
 import { removeAssignedReviews } from "../utils/assignedReview";
+import { removeReviews } from "../utils/reviewSlice";
 
 const Navbar = () => {
   const user = useSelector((store) => store.user);
@@ -18,6 +19,7 @@ const Navbar = () => {
     dispatch(removeUser());
     dispatch(removeEmployees());
     dispatch(removeAssignedReviews());
+    dispatch(removeReviews());
     navigate("/login");
   };
 

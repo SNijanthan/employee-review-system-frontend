@@ -56,5 +56,7 @@ export default Main;
  * ? Employees
  *
  * * Todos
- * * 1.
+ * * 1. GET - "/my-feedbacks"
+ * * 2. PATCH - "/feedback/:reviewedId"
+ * * 3. GET - "/feedbacks/received"
  */

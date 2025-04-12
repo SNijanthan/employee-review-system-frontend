@@ -33,7 +33,7 @@ const Navbar = () => {
           Employee Review System
         </Link>
         <div className="flex items-center mr-5 font-mono">
-          {user?.name && <p className="mx-2">Welcome {user.name} 😊</p>}
+          {user?.name && <p className="mx-2">Welcome {user.name}🔥</p>}
           {user?.role && <p className="mx-5">Role: {user.role}</p>}
           {user && user.role === "admin" && (
             <Link to="/add-employee">

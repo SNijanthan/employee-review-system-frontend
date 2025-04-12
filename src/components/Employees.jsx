@@ -46,7 +46,7 @@ const Employees = () => {
   }, []);
 
   return (
-    <div className="w-5/6 m-auto flex items-center justify-between gap-10">
+    <div className="w-5/6 m-auto flex justify-between gap-10">
       <ReceivedFeedbacks />
       <AssignedReviews />
     </div>

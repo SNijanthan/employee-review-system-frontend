@@ -31,7 +31,7 @@ const Main = () => {
     }
   }, [user]);
 
-  return <>{user.role === "admin" ? <Admin /> : <Employees />}</>;
+  return <>{user?.role === "admin" ? <Admin /> : <Employees />}</>;
 };
 
 export default Main;

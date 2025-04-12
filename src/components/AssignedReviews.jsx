@@ -43,37 +43,40 @@ const AssignedReviews = () => {
   };
 
   return (
-    <div className="w-full text-center flex flex-col items-center">
-      <h1 className="my-5 text-6xl font-light tracking-wider">
+    <div className="flex flex-col items-center">
+      <h1 className="my-5 text-6xl font-serif tracking-wider mb-10 text-sky-500">
         Assigned Reviews
       </h1>
-      {assignedReviews.map((review) => (
-        <div className="card bg-base-300 w-96 my-1" key={review._id}>
-          <div className="card-body text-center">
-            <p className="text-xl font-light">
-              {review.reviewedId.name.toUpperCase()}
-            </p>
-            <textarea
-              className="textarea"
-              placeholder="Comments"
-              value={comments[review.reviewedId._id] || ""}
-              onChange={(e) =>
-                handleChange(review.reviewedId._id, e.target.value)
-              }
-            ></textarea>
-            <div className="card-actions justify-end mt-5">
-              <button
-                className="btn bg-gray-500 text-black font-light mx-auto"
-                onClick={() => handleUpdateComment(review.reviewedId._id)}
-              >
-                Update Comments
-              </button>
-            </div>
-          </div>
-        </div>
-      ))}
-      {assignedReviews.length === 0 && (
+      {assignedReviews.length === 0 ? (
         <p className="text-xl mt-5 text-gray-500">No more assigned reviews.</p>
+      ) : (
+        <div className="w-full text-center flex flex-col items-center">
+          {assignedReviews.map((review) => (
+            <div className="card bg-base-300 w-96 my-1" key={review._id}>
+              <div className="card-body text-center">
+                <p className="text-xl font-light">
+                  {review.reviewedId.name.toUpperCase()}
+                </p>
+                <textarea
+                  className="textarea"
+                  placeholder="Comments"
+                  value={comments[review.reviewedId._id] || ""}
+                  onChange={(e) =>
+                    handleChange(review.reviewedId._id, e.target.value)
+                  }
+                ></textarea>
+                <div className="card-actions justify-end mt-5">
+                  <button
+                    className="btn bg-gray-500 text-black font-light mx-auto"
+                    onClick={() => handleUpdateComment(review.reviewedId._id)}
+                  >
+                    Update Comments
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       )}
     </div>
   );
